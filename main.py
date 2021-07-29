@@ -41,3 +41,15 @@ if __name__ == '__main__':
     query_metrics.query_pod_metrics(exp_start, exp_end, base_metrics_path)
     query_metrics.query_service_metrics(exp_start, exp_end,base_metrics_path)
 
+# 每个service的每秒处理请求数 sum(rate(istio_requests_total{destination_workload_namespace="sock-shop",reporter="destination"}[1m])) by (destination_workload )
+
+# 每个service的延迟毫秒数总和 sum(rate(istio_request_duration_milliseconds_sum{destination_workload_namespace="sock-shop",reporter="destination"}[1m])) by (destination_workload )
+
+# 每个service的延迟毫秒数个数 sum(rate(istio_request_duration_milliseconds_count{destination_workload_namespace="sock-shop",reporter="destination"}[1m])) by (destination_workload )
+
+# 每个service的延迟中位数 histogram_quantile(0.50, sum(irate(istio_request_duration_milliseconds_bucket{reporter='source', destination_workload_namespace='sock-shop'}[1m])) by (destination_workload, source_workload, le))
+
+# 响应错误数量(4xx,5xx)   sum(rate(istio_request_duration_milliseconds_sum{destination_workload_namespace="sock-shop",reporter="destination",response_code=~"^40.*|^50.*"}[1m])) by (destination_workload, source_workload )
+
+# 响应正确数量(2xx,3xx)   sum(rate(istio_request_duration_milliseconds_sum{destination_workload_namespace="sock-shop",reporter="destination",response_code=~"^20.*|^30.*"}[1m])) by (destination_workload, source_workload )
+
