@@ -15,6 +15,7 @@ node_modules/
 .idea/
 
 # Logs
+data
 logs
 *.log
 npm-debug.log*

@@ -1,7 +1,7 @@
 #-*- coding=utf-8'*-
 CASE_NAME = 'case01'
 CASE_TYPE = 'normal'
-FAULT_TIME = 1627565786
+FAULT_TIME = 1627565788
 NAME_SPACE = 'sock-shop'
 
 # 日志相关
