@@ -6,17 +6,22 @@ import query_metrics
 
 import utils
 
+import time  # 引入time模块
+
+
+
+
 fault_time = config.FAULT_TIME
 exp_start = fault_time - 60 * 5
 exp_end = fault_time + 60 * 5
 
 if __name__ == '__main__':
-
-    print("111")
+    cur_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    print("当前时间戳为:", cur_time)
     # 1、创建相应的目录
     utils.mkdir("./%s" %(config.DATA_DIR))
-    # base_path= "./%s/%s_%s" %(config.DATA_DIR,config.CASE_NAME,file_timestamp)
-    base_path = "./%s/%s" % (config.DATA_DIR, config.CASE_NAME)
+    base_path= "./%s/%s_getdadatime_%s" %(config.DATA_DIR,config.CASE_NAME,cur_time)
+    # base_path = "./%s/%s" % (config.DATA_DIR, config.CASE_NAME)
     utils.mkdir(base_path)
     base_path += "/%s_%s" % (config.CASE_TYPE,fault_time)
     print(base_path)
